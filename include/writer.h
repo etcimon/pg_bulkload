@@ -22,7 +22,9 @@
 
 #include "reader.h"
 
-#define MAXINT8LEN		25
+#ifndef MAXINT8LEN
+#define MAXINT8LEN		20
+#endif
 
 #define DEFAULT_MAX_DUP_ERRORS	0
 

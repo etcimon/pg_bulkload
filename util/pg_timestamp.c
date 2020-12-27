@@ -14,7 +14,9 @@
 PG_MODULE_MAGIC;
 
 /* prototype of static function */
+#if PG_VERSION_NUM < 130000
 static void AdjustTimestampForTypmod(Timestamp *time, int32 typmod);
+#endif
 extern Datum pg_timestamp_in(PG_FUNCTION_ARGS);
 
 PG_FUNCTION_INFO_V1(pg_timestamp_in);
@@ -220,6 +222,7 @@ pg_timestamp_in(PG_FUNCTION_ARGS)
  * @brief Adjust the timestamp value.
  *
  */
+#if PG_VERSION_NUM < 130000
 static void
 AdjustTimestampForTypmod(Timestamp *time, int32 typmod)
 {
@@ -294,3 +297,4 @@ AdjustTimestampForTypmod(Timestamp *time, int32 typmod)
 #endif
 	}
 }
+#endif
